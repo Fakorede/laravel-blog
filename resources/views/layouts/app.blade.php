@@ -113,6 +113,12 @@
             toastr.success("{{ Session::get('success') }}");
 
         @endif
+
+        @if(Session::has('warning'))
+
+            toastr.warning("{{ Session::get('warning') }}");
+
+        @endif
     </script>
 </body>
 </html>
