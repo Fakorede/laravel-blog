@@ -11,7 +11,7 @@
                 <th>Title</th>
                 <th>Image</th>
                 <th>Edit</th>
-                <th>Delete</th>
+                <th>Trash</th>
             </thead>
             <tbody>
                 @foreach($posts as $post)
