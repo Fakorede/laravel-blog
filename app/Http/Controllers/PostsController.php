@@ -121,4 +121,10 @@ class PostsController extends Controller
 
         return redirect()->back();
     }
+
+    public function trashed() {
+        $posts = Post::onlyTrashed()->get();
+        
+        return view('admin.posts.trashed')->with('posts', $posts);
+    }
 }
