@@ -29,7 +29,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="{{ route('post.delete', [ 'id' => $post->id ]) }}" class="btn btn-xs btn-danger">
+                            <a href="{{ route('post.trash', [ 'id' => $post->id ]) }}" class="btn btn-xs btn-danger">
                                 Trash
                             </a>
                         </td>
