@@ -15,6 +15,11 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct() {
+        $this->middleware('admin');
+    }
+
     public function index()
     {
         return view('admin.users.index')->with('users', User::all());
@@ -52,7 +57,8 @@ class UsersController extends Controller
 
         // create profile
         $profile = Profile::create([
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'avatar' => 'uploads/avatars/avatar.png'
         ]);
 
         Session::flash('success', 'User created Successfully!');
@@ -103,5 +109,29 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function admin($id)
+    {
+        $user = User::find($id);
+        
+        $user->admin = 1;
+        $user->save();
+
+        Session::flash('success', 'Succefully changed user permission!');
+
+        return redirect()->back();
+    }
+
+    public function not_admin($id)
+    {
+        $user = User::find($id);
+        
+        $user->admin = 0;
+        $user->save();
+
+        Session::flash('success', 'Succefully changed user permission!');
+
+        return redirect()->back();
     }
 }
