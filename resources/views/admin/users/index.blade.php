@@ -1,0 +1,53 @@
+@extends('layouts.app')
+
+@section('content')
+
+<div class="panel panel-default">
+
+        <div class="panel-heading">
+            USERS
+        </div>
+
+    <div class="panel-body">
+    
+        <table class="table table-hover">
+            <thead>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Permission</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                @if($users->count() > 0)
+                    @foreach($users as $user)
+
+                        <tr>
+                            <td>
+                                {{ $user->name }}
+                            </td>
+                            <td>
+                                <img src="{{ asset($user->profile->avatar) }}" alt="" width="60px" height="60px" style="border-radius: 50%;">
+                            </td>
+                            <td>
+                                Permissions
+                            </td>
+                            <td>
+                                Delete
+                            </td>
+                        </tr>
+
+                    @endforeach
+                @else
+                    <tr>
+                        <th colspan="5" class="text-center">No Users</th>
+                    </tr>
+                @endif
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+
+@stop
