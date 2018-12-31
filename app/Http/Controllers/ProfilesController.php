@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Session;
 
 use Illuminate\Http\Request;
 
@@ -70,7 +71,52 @@ class ProfilesController extends Controller
      */
     public function update(Request $request)
     {
-        //
+
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'facebook' => 'required|url',
+            'twitter' => 'required|url',
+            'linkedin' => 'required|url',
+            'medium' => 'required|url',
+            'github' => 'required|url'
+        ]);
+
+        $user = Auth::user();
+       
+
+        if($request->hasFile('avatar')) {
+            $avatar = $request->avatar;
+
+            $avatar_new_name = time() . $avatar->getClientOriginalName();
+
+            $avatar->move('uploads/avatars', $avatar_new_name);
+
+            $user->profile->avatar = 'uploads/avatars/' . $avatar_new_name;
+
+            $user->profile->save();
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->profile->facebook = $request->facebook;
+        $user->profile->twitter = $request->twitter;
+        $user->profile->linkedin = $request->linkedin;
+        $user->profile->medium = $request->medium;
+        $user->profile->github = $request->github;
+
+
+        if($request->has('password')) {
+            $user->password = bcrypt($request->password);
+        }
+
+        $user->save();
+        $user->profile->save();
+
+        Session::flash('success', 'Profile has been updated Successfully!');
+
+        return redirect()->back();
+
     }
 
     /**
