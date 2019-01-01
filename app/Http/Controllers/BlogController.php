@@ -22,5 +22,14 @@ class BlogController extends Controller
                 ->with('vue', Category::find(4))
                 ->with('settings', Settings::first());
     }
+
+    public function singlePost($slug) {
+        $post = Post::where('slug', $slug)->first();
+
+        return view('post')->with('post', $post)
+                            ->with('title', $post->title)
+                            ->with('settings', Settings::first())
+                            ->with('categories', Category::take(5)->get());
+    }
 }
 
