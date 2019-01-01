@@ -16,6 +16,11 @@ Route::get('/', [
   'as' => 'index'
 ]);
 
+Route::get('/{slug}', [
+  'uses' => 'BlogController@singlePost',
+  'as' => 'post.single'
+]);
+
 Auth::routes();
 
 
