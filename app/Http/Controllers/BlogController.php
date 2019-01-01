@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Settings;
 use App\Category;
 use App\Post;
+use App\Tag;
 
 use Illuminate\Http\Request;
 
@@ -26,10 +27,19 @@ class BlogController extends Controller
     public function singlePost($slug) {
         $post = Post::where('slug', $slug)->first();
 
+        // next post
+        $next_id = Post::where('id', '>', $post->id)->min('id');
+
+        // prev post
+        $prev_id = Post::where('id', '<', $post->id)->max('id');
+
         return view('post')->with('post', $post)
                             ->with('title', $post->title)
                             ->with('settings', Settings::first())
-                            ->with('categories', Category::take(5)->get());
+                            ->with('categories', Category::take(5)->get())
+                            ->with('next', Post::find($next_id))
+                            ->with('prev', Post::find($prev_id))
+                            ->with('tags', Tag::all());
     }
 }
 
