@@ -68,7 +68,7 @@
                             <div class="post__content-info">
 
                                     <h2 class="post__title entry-title text-center">
-                                        <a href="15_blog_details.html">{{ $first_post->title }}</a>
+                                        <a href="{{ route('post.single', [ 'slug' => $first_post->slug ]) }}">{{ $first_post->title }}</a>
                                     </h2>
 
                                     <div class="post-additional-info">
@@ -112,7 +112,7 @@
                             <a href="{{ $second_post->featured }}" class="link-image js-zoom-image">
                                 <i class="seoicon-zoom"></i>
                             </a>
-                            <a href="#" class="link-post">
+                            <a href="{{ route('post.single', [ 'slug' => $second_post->slug ]) }}" class="link-post">
                                 <i class="seoicon-link-bold"></i>
                             </a>
                         </div>
@@ -122,7 +122,7 @@
                             <div class="post__content-info">
 
                                     <h2 class="post__title entry-title text-center">
-                                        <a href="15_blog_details.html">{{ $second_post->title }}</a>
+                                        <a href="{{ route('post.single', [ 'slug' => $second_post->slug ]) }}">{{ $second_post->title }}</a>
                                     </h2>
 
                                     <div class="post-additional-info">
@@ -162,7 +162,7 @@
                             <a href="{{ $third_post->featured }}" class="link-image js-zoom-image">
                                 <i class="seoicon-zoom"></i>
                             </a>
-                            <a href="#" class="link-post">
+                            <a href="{{ route('post.single', [ 'slug' => $third_post->slug ]) }}" class="link-post">
                                 <i class="seoicon-link-bold"></i>
                             </a>
                         </div>
@@ -172,7 +172,7 @@
                             <div class="post__content-info">
 
                                     <h2 class="post__title entry-title text-center">
-                                        <a href="15_blog_details.html">{{ $third_post->title }}</a>
+                                        <a href="{{ route('post.single', [ 'slug' => $third_post->slug ]) }}">{{ $third_post->title }}</a>
                                     </h2>
 
                                     <div class="post-additional-info">
@@ -233,7 +233,7 @@
                                         <div class="case-item__thumb">
                                             <img src="{{ $post->featured }}" alt="{{ $post->title }}">
                                         </div>
-                                        <h6 class="case-item__title"><a href="{{ route('post.single', [ 'slug' => $first_post->slug ]) }}">{{ $post->title }}</a></h6>
+                                        <h6 class="case-item__title"><a href="{{ route('post.single', [ 'slug' => $post->slug ]) }}">{{ $post->title }}</a></h6>
                                     </div>
                                 </div>
 
@@ -265,7 +265,7 @@
                                         <div class="case-item__thumb">
                                             <img src="{{ $post->featured }}" alt="{{ $post->title }}">
                                         </div>
-                                        <h6 class="case-item__title"><a href="#">{{ $post->title }}</a></h6>
+                                        <h6 class="case-item__title"><a href="{{ route('post.single', [ 'slug' => $post->slug ]) }}">{{ $post->title }}</a></h6>
                                     </div>
                                 </div>
 
@@ -297,7 +297,7 @@
                                         <div class="case-item__thumb">
                                             <img src="{{ $post->featured }}" alt="{{ $post->title }}">
                                         </div>
-                                        <h6 class="case-item__title"><a href="#">{{ $post->title }}</a></h6>
+                                        <h6 class="case-item__title"><a href="{{ route('post.single', [ 'slug' => $post->slug ]) }}">{{ $post->title }}</a></h6>
                                     </div>
                                 </div>
 
