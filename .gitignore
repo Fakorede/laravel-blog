@@ -12,3 +12,4 @@ yarn-error.log
 .env
 public/uploads
 database/seeds/
+resources/views/includes/disqus.blade.php
