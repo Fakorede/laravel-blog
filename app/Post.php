@@ -14,7 +14,7 @@ class Post extends Model
 
     // The attributes that are mass assignable
     protected $fillable = [
-      'title', 'content', 'category_id', 'featured', 'slug'
+      'title', 'content', 'category_id', 'featured', 'slug', 'user_id'
   ];
 
     protected $dates = ['deleted_at'];
@@ -29,5 +29,9 @@ class Post extends Model
 
     public function tags() {
       return $this->belongsTomany('App\Tag');
+    }
+
+    public function user() {
+      return $this->belongsTo('App\User');
     }
 }

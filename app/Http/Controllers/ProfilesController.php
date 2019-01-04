@@ -104,6 +104,7 @@ class ProfilesController extends Controller
         $user->profile->linkedin = $request->linkedin;
         $user->profile->medium = $request->medium;
         $user->profile->github = $request->github;
+        $user->profile->about = $request->about;
 
 
         if($request->has('password')) {
