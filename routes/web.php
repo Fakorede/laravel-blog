@@ -16,7 +16,19 @@ Route::get('/', [
   'as' => 'index'
 ]);
 
+// subscribe users
+Route::post('/subscribe', function() {
+  $email = request('email');
+
+  // Newsletter class registered as alias
+  Newsletter::subscribe($email);
+
+  Session::flash('subscribed', 'You have successfully subscribed to our newsletter!');
+  return redirect()->back();
+});
+
 Route::get('/results', function() {
+
   $posts = \App\Post::where('title', 'like', '%' . request('query') . '%')->get();
 
   return view('results')->with('posts', $posts)
