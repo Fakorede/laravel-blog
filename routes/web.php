@@ -21,6 +21,18 @@ Route::get('/post/{slug}', [
   'as' => 'post.single'
 ]);
 
+// Categories route
+Route::get('/category/{id}', [
+  'uses' => 'BlogController@category',
+  'as' => 'category.single'
+]);
+
+// Tag route
+Route::get('/tag/{id}', [
+  'uses' => 'BlogController@tag',
+  'as' => 'tag.single'
+]);
+
 Auth::routes();
 
 
